@@ -1,0 +1,81 @@
+/* Montserrat-Regular */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular-webfont.woff') format('woff'),; 
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: bold;
+    src: url('../fonts/Roboto-Medium-webfont.woff') format('woff'),; 
+}
+
+*{
+    font-family: 'Roboto';
+}
+
+h1{
+    font-size: bold;
+    font-size: 48px;
+    color: $color-primary;
+    word-wrap: break-word;
+
+    @media (max-width: $breakpoint-minTablet) {
+        font-size: 36px;
+    }
+
+    @media (max-width: $breakpoint-minMobile) {
+        font-size: 24px;
+    }
+}
+
+h2{
+    font-size: 36px;
+    color: $color-secondary;
+
+    @media (max-width: $breakpoint-minTablet) {
+        font-size: 24px;
+    }
+
+    @media (max-width: $breakpoint-minMobile) {
+        font-size: 18px;
+    }
+}
+
+h3{
+    font-size: 18px;
+    color: $color-primary;
+
+    @media (max-width: $breakpoint-minMobile) {
+        font-size: 13px;
+    }
+}
+
+p{
+    font-size: 18px;
+    color: $color-secondary;
+
+    @media (max-width: $breakpoint-minMobile) {
+        font-size: 12px;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.textWhite{
+    color:$color-primary;
+}
+
+.textBigger{
+    font-size: 24px;
+    @media (max-width: $breakpoint-minMobile) {
+        font-size: 13px;
+    }
+}
+
+.invisible{
+    font-size: 0;
+}

@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    box-sizing: border-box;
+    width: 100vw;
+    min-width: 335px;
+    max-width: 1240px;
+    margin: auto;
+    margin-top:2rem;
+
+    @media (max-width: $breakpoint-minMobile) {
+        max-width: 335px;
+    }
+
+    @media (max-width: $breakpoint-minTablet) {
+        max-width: 728px;
+    } 
+}
