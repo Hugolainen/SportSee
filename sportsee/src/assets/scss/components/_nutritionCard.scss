@@ -1,0 +1,44 @@
+.nutritionCard{
+    width: 258px;
+    height: 124px;
+    background-color: darken($color-tertiary, 2%);
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    margin: 1rem;
+
+    &__icon{
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: lighten($color-primary,45%);
+        color: $color-primary;
+
+        &--protein{
+            background-color: lighten($color-protein,45%);
+            color: $color-protein;
+        }
+
+        &--carb{
+            background-color: lighten($color-carb,45%);
+            color: $color-carb;
+        }
+
+        &--lipid{
+            background-color: lighten($color-lipid,45%);
+            color: $color-lipid;
+        }
+    }
+
+    &__info{
+        margin-left: 1rem
+    }
+}

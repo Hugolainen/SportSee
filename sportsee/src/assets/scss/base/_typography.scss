@@ -20,6 +20,7 @@ h1{
     
     & em{
         color: $color-primary;
+        font-style: normal;
     }
 }
 
@@ -28,7 +29,7 @@ p{
     color: $color-secondary;
 
     & strong{
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
     }
 }

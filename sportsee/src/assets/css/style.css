@@ -34,6 +34,7 @@ h1 {
 }
 h1 em {
   color: #ff0000;
+  font-style: normal;
 }
 
 p {
@@ -41,7 +42,7 @@ p {
   color: #020203;
 }
 p strong {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -68,6 +69,43 @@ a {
 
 .invisible {
   font-size: 0;
+}
+
+.nutritionCard {
+  width: 258px;
+  height: 124px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  margin: 1rem;
+}
+.nutritionCard__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe6e6;
+  color: #ff0000;
+}
+.nutritionCard__icon--protein {
+  background-color: white;
+  color: #4ab8ff;
+}
+.nutritionCard__icon--carb {
+  background-color: #fffcf0;
+  color: #fdcc0c;
+}
+.nutritionCard__icon--lipid {
+  background-color: white;
+  color: #fd5181;
+}
+.nutritionCard__info {
+  margin-left: 1rem;
 }
 
 .header {
@@ -136,13 +174,30 @@ a {
   color: #ffffff;
 }
 
-.appartmentGallery {
-  background-color: #ffffff;
-  border-radius: 25px;
-  padding: 3rem 3rem 0 3rem;
+.homepage {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.box {
+  margin: 3rem 4rem;
+  width: 100%;
+}
+
+.stats {
+  display: flex;
   justify-content: space-between;
+  margin-top: 2rem;
+}
+.stats__activity {
+  display: flex;
+  flex-direction: column;
+}
+.stats__activity__detail {
+  display: flex;
+}
+.stats__nutrition {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */

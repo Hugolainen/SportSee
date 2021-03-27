@@ -1,0 +1,25 @@
+.box{
+    margin: 3rem 4rem;
+    width: 100%;
+}
+
+.stats{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 2rem;
+
+    &__activity{
+        display: flex;
+        flex-direction: column;
+
+        &__detail{
+            display: flex;
+        }
+    }
+
+    &__nutrition{
+        display: flex;
+        flex-direction: column;
+    }
+}

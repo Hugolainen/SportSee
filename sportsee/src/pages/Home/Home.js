@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Sidebar from '../../layouts/Sidebar/Sidebar'
+import Stats from '../Stats/Stats'
 
 
 class Home extends Component {
@@ -8,6 +9,7 @@ class Home extends Component {
         return (
             <div className="homepage">
                 <Sidebar />
+                <Stats />
             </div>
         );
     }

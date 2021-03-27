@@ -1,13 +1,3 @@
-.appartmentGallery{
-    background-color: $color-tertiary;
-    border-radius: 25px;
-    padding: 3rem 3rem 0 3rem;
-
+.homepage{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    @media (max-width: $breakpoint-minScreenSize) {
-
-    }
 }
