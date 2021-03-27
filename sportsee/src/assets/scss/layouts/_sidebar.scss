@@ -1,0 +1,45 @@
+.sidebar{
+    background-color: $color-secondary;
+    width: 117px;
+    height: 933px;
+    max-height: 933px;
+    margin-top: -1px;
+    padding-top: 20%;
+    padding-bottom: 15%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+
+        &__icon{
+            margin: 1rem 0;
+            background-color: $color-tertiary;
+            cursor: pointer;
+            border-radius: 6px;
+            width: 64px;
+            height: 64px;   
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & img{
+                max-height: 32px;
+            }
+        }
+    }
+
+    &__copyrights{
+        display:block;
+        width: 200px;
+        
+        
+        transform: rotate(-90deg);
+        color:$color-tertiary;
+    }
+}

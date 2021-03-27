@@ -1,9 +1,11 @@
-$color-primary: #ffffff;
-$color-secondary: #ff6060;
-$color-tertiary: #f7f7f7;
-$color-footer: #000000;
+$color-primary: #ff0000;
+$color-secondary: #020203;
+$color-tertiary: #ffffff;
+$color-title: #000000;
+$color-protein: #4ab8ff;
+$color-carb: #fdcc0c;
+$color-lipid: #fd5181;
+
 
 // Breakpoints
-$breakpoint-maxDesktop: 1440px;
-$breakpoint-minTablet: 800px;
-$breakpoint-minMobile: 425px;
+$breakpoint-minScreenSize: 1024px;
