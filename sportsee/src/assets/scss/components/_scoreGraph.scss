@@ -1,0 +1,22 @@
+.scoreGraph{
+    background-color: $color-bgLight;
+    border-radius: 5px;
+
+    font-size: 15px;
+
+    width: 260px;
+    height: 260px;
+
+    &__text{
+        font-size: 16px;
+        fill: $color-statsGrey;
+        text-anchor: middle;
+    }
+
+    &__value{
+        font-size: 26px;
+        fill: $color-statsGrey;
+        text-anchor: middle;
+        font-weight: bold;
+    }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AttributeGraph from '../../elements/AttributeGraph/AttributeGraph';
+import RadarGraph from '../../elements/RadarGraph/RadarGraph';
 import AverageSpeedGraph from '../../elements/AverageSpeedGraph/AverageSpeedGraph';
 import DailyActivityGraph from '../../elements/DailyActivityGraph/DailyActivityGraph';
 import NutritionCard from '../../elements/NutritionCard/NutritionCard';
@@ -23,15 +23,15 @@ class Stats extends Component {
                         <DailyActivityGraph />
                         <div className="stats__activity__detail">
                             <AverageSpeedGraph />
-                            <AttributeGraph />
+                            <RadarGraph />
                             <ScoreGraph />
                         </div>
                     </div>
                     <div className="stats__nutrition">
-                        <NutritionCard />
-                        <NutritionCard />
-                        <NutritionCard />
-                        <NutritionCard />
+                        <NutritionCard type="calories"/>
+                        <NutritionCard type="proteins"/>
+                        <NutritionCard type="carbs"/>
+                        <NutritionCard type="lipids"/>
                     </div>
                 </div>
             </section>

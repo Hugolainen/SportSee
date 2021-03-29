@@ -22,7 +22,7 @@ body {
 @font-face {
   font-family: "Roboto";
   font-weight: bold;
-  src: url("../fonts/Roboto-Medium-webfont.woff") format("woff");
+  src: url("../fonts/Roboto-Bold-webfont.woff") format("woff");
 }
 * {
   font-family: "Roboto";
@@ -74,7 +74,7 @@ a {
 .nutritionCard {
   width: 258px;
   height: 124px;
-  background-color: #fafafa;
+  background-color: #fbfbfb;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -93,19 +93,45 @@ a {
   color: #ff0000;
 }
 .nutritionCard__icon--protein {
-  background-color: white;
+  background-color: #caeaff;
   color: #4ab8ff;
 }
 .nutritionCard__icon--carb {
-  background-color: #fffcf0;
+  background-color: #fff6d6;
   color: #fdcc0c;
 }
 .nutritionCard__icon--lipid {
-  background-color: white;
+  background-color: #ffe8ef;
   color: #fd5181;
 }
 .nutritionCard__info {
+  color: #282d30;
   margin-left: 1rem;
+}
+
+.radarGraph {
+  background-color: #282d30;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.scoreGraph {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 260px;
+  height: 260px;
+}
+.scoreGraph__text {
+  font-size: 16px;
+  fill: #282d30;
+  text-anchor: middle;
+}
+.scoreGraph__value {
+  font-size: 26px;
+  fill: #282d30;
+  text-anchor: middle;
+  font-weight: bold;
 }
 
 .header {

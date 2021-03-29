@@ -1,7 +1,7 @@
 .nutritionCard{
     width: 258px;
     height: 124px;
-    background-color: darken($color-tertiary, 2%);
+    background-color: $color-bgLight;
     border-radius: 5px;
 
     display: flex;
@@ -23,22 +23,23 @@
         color: $color-primary;
 
         &--protein{
-            background-color: lighten($color-protein,45%);
+            background-color: lighten($color-protein,25%);
             color: $color-protein;
         }
 
         &--carb{
-            background-color: lighten($color-carb,45%);
+            background-color: lighten($color-carb,40%);
             color: $color-carb;
         }
 
         &--lipid{
-            background-color: lighten($color-lipid,45%);
+            background-color: lighten($color-lipid,30%);
             color: $color-lipid;
         }
     }
 
     &__info{
+        color: $color-statsGrey;
         margin-left: 1rem
     }
 }
