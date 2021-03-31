@@ -1,0 +1,29 @@
+.dailyActivityGraph{
+    height: 320px;
+    width: 835px;
+    background-color: $color-bgLight;
+    border-radius: 5px;
+    font-size: 14px;
+
+    &__title{
+        font-size: 15px;
+        font-weight: bold;
+        color: $color-statsGrey;
+    }
+
+    &__legend{
+        color: lighten($color-statsGrey, 30%);
+    }
+
+    &__tooltip{
+        background-color: $color-primary;
+        color: $color-tertiary;
+        line-height: 40px;
+        padding: 0 8px;
+
+        &__text{
+            color: $color-tertiary;
+            text-align: center;
+        }
+    }
+}

@@ -7,19 +7,24 @@
     display: flex;
     justify-content: space-between;
 
-    margin-top: 2rem;
+    margin: 2rem;
+    margin-top: 4.5rem;
+    height: 610px;
 
     &__activity{
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
 
         &__detail{
             display: flex;
+            justify-content: space-between;
         }
     }
 
     &__nutrition{
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
 }

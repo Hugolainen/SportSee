@@ -1,0 +1,22 @@
+.averageSpeedGraph{
+    background-color: $color-primary;
+    border-radius: 5px;
+
+    font-size: 15px;
+
+    width: 260px;
+    height: 260px;
+
+    &__tooltip{
+        background-color: $color-tertiary;
+        color: $color-primary;
+        line-height: 40px;
+        padding: 0 8px;
+    }
+
+    &__legend{
+        font-size: 12px;
+        line-height: 26px;
+        fill: $color-tertiary;
+    }
+}

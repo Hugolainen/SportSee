@@ -9,7 +9,6 @@ import {
 class RadarGraph extends Component {
     
     render() {
-
         const data = [
             {
                 attribute: 'intensity',
@@ -35,7 +34,7 @@ class RadarGraph extends Component {
                 attribute: 'Cardio',
                 value: 80,
             },
-          ];
+        ];
 
         return (
             <div className="radarGraph">
@@ -53,6 +52,8 @@ class RadarGraph extends Component {
                         <PolarAngleAxis 
                             dataKey="attribute" 
                             stroke = "white"
+                            axisLine= {false}
+                            tickLine={false}
                         />
                         
                         <Radar
