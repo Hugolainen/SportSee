@@ -4,6 +4,7 @@ import {
     RadarChart, 
     PolarGrid, 
     PolarAngleAxis, 
+    ResponsiveContainer
 } from 'recharts';
 
 class RadarGraph extends Component {
@@ -38,30 +39,28 @@ class RadarGraph extends Component {
 
         return (
             <div className="radarGraph">
-                <RadarChart
-                        cx={130}
-                        cy={130}
-                        outerRadius={80}
-                        width={260}
-                        height={260}
-                        data={data}
+                <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart
+                            outerRadius="55%"
+                            data={data}
                     >
                         <PolarGrid 
-                            stroke = "white"
+                                stroke = "white"
                         />
                         <PolarAngleAxis 
-                            dataKey="attribute" 
-                            stroke = "white"
-                            axisLine= {false}
-                            tickLine={false}
+                                dataKey="attribute" 
+                                stroke = "white"
+                                axisLine= {false}
+                                tickLine={false}
                         />
-                        
+                            
                         <Radar
                             dataKey="value"
                             fill="#ff0101"
                             fillOpacity={0.6}
                         />
                     </RadarChart>
+                </ResponsiveContainer>
             </div>
 
         );

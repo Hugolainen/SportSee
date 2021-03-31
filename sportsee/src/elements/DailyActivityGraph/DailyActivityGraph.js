@@ -6,7 +6,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 class DailyActivityGraph extends Component {
@@ -91,37 +92,37 @@ class DailyActivityGraph extends Component {
 
         return (
             <div className="dailyActivityGraph">
-                <BarChart
-                  width={835}
-                  height={320}
-                  data={data}
-                  margin={{
-                    top: 20,
-                    right: 0,
-                    left: 40,
-                    bottom: 20
-                  }}
-                  barCategoryGap={54}
-                  barGap={8}
-                  barSize={7}
-                >
-      <CartesianGrid vertical={false} strokeDasharray="3 3" />
-      <XAxis tickLine={false} dataKey="name" stroke="#9B9EAC"/>
-      <YAxis domain={['dataMin - 100', 'dataMax + 100']} hide={true} yAxisId="left" orientation="left"/>
-      <YAxis tickLine={false} axisLine={false} domain={['dataMin - 1', 'dataMax + 1']} yAxisId="right" orientation="right" stroke="#9B9EAC"/>
-      <Tooltip content={<CustomTooltip />}/>
-      <Legend height={100} formatter={editLegendText} iconSize={8} iconType="circle" align="right" verticalAlign="top"/>
-      <Bar radius={[10, 10, 0, 0]} yAxisId="right" dataKey="weigth" fill="#282D30" />
-      <Bar radius={[10, 10, 0, 0]} yAxisId="left" dataKey="burnedCal" fill="#E60000" />
-      <text 
-        className="dailyActivityGraph__title"
-        fontSize="15px"
-        x={70}
-        y={35}
-        textAnchor="middle"
-        fill="black"
-    > Daily activity </text>
-    </BarChart>
+              <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={data}
+                    margin={{
+                      top: 20,
+                      right: 0,
+                      left: 40,
+                      bottom: 20
+                    }}
+                    barCategoryGap={54}
+                    barGap={8}
+                    barSize={7}
+                  >
+                    <CartesianGrid vertical={false} strokeDasharray="3 3" />
+                    <XAxis tickLine={false} dataKey="name" stroke="#9B9EAC"/>
+                    <YAxis domain={['dataMin - 100', 'dataMax + 100']} hide={true} yAxisId="left" orientation="left"/>
+                    <YAxis tickLine={false} axisLine={false} domain={['dataMin - 1', 'dataMax + 1']} yAxisId="right" orientation="right" stroke="#9B9EAC"/>
+                    <Tooltip content={<CustomTooltip />}/>
+                    <Legend height={100} formatter={editLegendText} iconSize={8} iconType="circle" align="right" verticalAlign="top"/>
+                    <Bar radius={[10, 10, 0, 0]} yAxisId="right" dataKey="weigth" fill="#282D30" />
+                    <Bar radius={[10, 10, 0, 0]} yAxisId="left" dataKey="burnedCal" fill="#E60000" />
+                    <text 
+                      className="dailyActivityGraph__title"
+                      fontSize="15px"
+                      x={70}
+                      y={35}
+                      textAnchor="middle"
+                      fill="black"
+                    > Daily activity </text>
+                  </BarChart>
+                </ResponsiveContainer>
             </div>
         );
     }

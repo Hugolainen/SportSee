@@ -4,6 +4,7 @@ import {
     Line,
     XAxis,
     Tooltip,
+    ResponsiveContainer
   } from "recharts";
 
 class AverageSpeedGraph extends Component {
@@ -54,9 +55,8 @@ class AverageSpeedGraph extends Component {
 
         return (
             <div className="averageSpeedGraph">
+              <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                    width={260}
-                    height={200}
                     data={data}
                     margin={{
                         top: 5,
@@ -65,18 +65,19 @@ class AverageSpeedGraph extends Component {
                         bottom: 5
                     }}
                 >
-      <XAxis className="averageSpeedGraph__legend" stroke="white" dataKey="name"  axisLine={false} tickLine={false} />
-      <Tooltip content={<CustomTooltip />}/>
+                  <XAxis className="averageSpeedGraph__legend" stroke="white" dataKey="name"  axisLine={false} tickLine={false} />
+                  <Tooltip content={<CustomTooltip />}/>
 
-      <Line
-        dot={false}
-        type="monotone"
-        dataKey="value"
-        stroke="white"
-        strokeWidth={3}
-        activeDot={{ r: 8 }}
-      />
-    </LineChart>
+                  <Line
+                    dot={false}
+                    type="monotone"
+                    dataKey="value"
+                    stroke="white"
+                    strokeWidth={3}
+                    activeDot={{ r: 8 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
         );
     }

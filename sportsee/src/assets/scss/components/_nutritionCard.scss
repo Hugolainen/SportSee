@@ -1,5 +1,7 @@
 .nutritionCard{
-    width: 258px;
+    width: 15vw;
+    min-width: 200px;
+    max-width: 258px;
     height: 124px;
     background-color: $color-bgLight;
     border-radius: 5px;
@@ -9,7 +11,7 @@
     padding: 32px;
 
     &__icon{
-        width: 60px;
+        min-width: 60px;
         height: 60px;
         border-radius: 6px;
 

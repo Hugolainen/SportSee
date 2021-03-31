@@ -5,7 +5,7 @@
     max-height: 933px;
     margin-top: -1px;
     padding-top: 20%;
-    padding-bottom: 15%;
+    padding-bottom: 150px;
 
     display: flex;
     flex-direction: column;
@@ -37,7 +37,6 @@
     &__copyrights{
         display:block;
         width: 200px;
-        
         
         transform: rotate(-90deg);
         color:$color-tertiary;
