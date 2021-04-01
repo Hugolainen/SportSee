@@ -1,15 +1,37 @@
 .box{
-    margin: 3rem 4rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+
+    &__title{
+        margin-left: 5rem;
+        margin-top: 2rem;
+
+        @media (max-width: 1230px) {
+            margin-left: 3rem;
+            margin-top: 2rem;
+        }
+
+        & p{
+            margin-top: 1rem;
+
+            @media (max-width: 1230px) {
+                margin-top: 0.5rem;
+            }
+        }
+    }
 }
 
 .stats{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     margin: 2rem;
-    margin-top: 4.5rem;
-    height: 610px;
+    min-height: 500px;
+    max-height: 610px;
+    height: 45vw;
 
     &__activity{
         display: flex;

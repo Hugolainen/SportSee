@@ -1,14 +1,21 @@
 .nutritionCard{
-    width: 15vw;
-    min-width: 200px;
+    width: 18vw;
+    min-width: 180px;
     max-width: 258px;
-    height: 124px;
+
+    min-height: 70px;
+    max-height: 124px;
+    height: 10vw;
+
     background-color: $color-bgLight;
     border-radius: 5px;
 
     display: flex;
     align-items: center;
     padding: 32px;
+    @media (max-width: 1230px) {
+        padding: 15px;
+    }
 
     &__icon{
         min-width: 60px;

@@ -19,8 +19,8 @@ class ScoreGraph extends Component {
                     <PieChart>
                         <Pie
                             data={data}
-                            innerRadius={80}
-                            outerRadius={90}
+                            innerRadius="60%"
+                            outerRadius="70%"
                             paddingAngle={5}
                             dataKey="value"
                             startAngle={90}
@@ -34,22 +34,29 @@ class ScoreGraph extends Component {
                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                             ))}
                         </Pie>
-                        <Pie cy="55%" data={filling} dataKey="value" nameKey="name" outerRadius={80} fill="white" />
+                        <Pie 
+                            cy="55%" 
+                            data={filling} 
+                            dataKey="value" 
+                            nameKey="name" 
+                            outerRadius="60%"
+                            fill="white" 
+                        />
                         <text fontSize="15px"
-                            x={50}
-                            y={50}
+                            x="20%"
+                            y="20%"
                             textAnchor="middle"
                             fill="black"
                         >
                         Score </text>
 
-                        <text className="scoreGraph__value" x="50%" y={130}>
+                        <text className="scoreGraph__value" x="50%" y="50%">
                             {data[0].value +"%"}
                         </text>
-                        <text className="scoreGraph__text" x="50%" y={150}>
+                        <text className="scoreGraph__text" x="50%" y="60%">
                             {"of your"}
                         </text>
-                        <text className="scoreGraph__text" x="50%" y={170}>
+                        <text className="scoreGraph__text" x="50%" y="70%">
                             {"goal"}
                         </text>
                     </PieChart>

@@ -1,10 +1,13 @@
 .sidebar{
     background-color: $color-secondary;
     width: 117px;
-    height: 933px;
+
+    min-height: 700px;
     max-height: 933px;
+    height: 70vw;
+
     margin-top: -1px;
-    padding-top: 20%;
+    padding-top: 10%;
     padding-bottom: 150px;
 
     display: flex;

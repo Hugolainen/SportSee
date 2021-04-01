@@ -15,8 +15,10 @@ class Stats extends Component {
 
         return (
             <section className="box">
-                <h1> Hello <em> {username} </em> </h1>
-                <p className="textBigger"> Congratulations! You reached yesterday’s goal! 👏 </p>
+                <div className="box__title">
+                    <h1> Hello <em> {username} </em> </h1>
+                    <p> Congratulations! You reached yesterday’s goal! 👏 </p>
+                </div>
             
                 <div className="stats">
                     <div className="stats__activity">

@@ -1,8 +1,12 @@
 .dailyActivityGraph{
-    height: 320px;
     min-width: 630px;
     max-width: 835px;
     width: 60vw;
+
+    min-height: 270px;
+    max-height: 320px;
+    height: 28vw;
+
     background-color: $color-bgLight;
     border-radius: 5px;
     font-size: 14px;
