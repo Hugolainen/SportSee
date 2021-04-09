@@ -52,7 +52,7 @@ class AverageSpeedGraph extends Component {
   render() {
     const data = this.generateData();
 
-    const CustomTooltip = ({ active, payload, label }) => {
+    const CustomTooltip = ({ active, payload}) => {
       if (active && payload && payload.length) {
           return (
               <div className="averageSpeedGraph__tooltip">
@@ -72,19 +72,33 @@ class AverageSpeedGraph extends Component {
                   top: 60,
                   right: 20,
                   left: 20,
-                  bottom: 13
+                  bottom: 20
               }}
           >
-            <XAxis className="averageSpeedGraph__legend" stroke="white" dataKey="day"  axisLine={false} tickLine={false} />
+            <XAxis 
+              className="averageSpeedGraph__legend" 
+              stroke="white" dataKey="day"  
+              axisLine={false} 
+              tickLine={false} 
+              tickMargin={20}
+            />
             <Tooltip content={<CustomTooltip />}/>
+
+            <defs>
+              <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="40%"   stop-color="rgba(255,255,255,0.5)"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+              </linearGradient>
+            </defs>
+
 
             <Line
               dot={false}
-              type="monotone"
+              type="natural"
               dataKey="sessionLength"
-              stroke="white"
+              stroke="url(#linear)"
               strokeWidth={3}
-              activeDot={{ r: 8 }}
+              activeDot={{ stroke: 'white', strokeWidth: 5, r: 3 }}
             />
 
             <text 
