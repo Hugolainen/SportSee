@@ -175,6 +175,9 @@ a {
   line-height: 26px;
   fill: #ffffff;
 }
+.averageSpeedGraph__title {
+  fill: rgba(255, 255, 255, 0.5);
+}
 
 .dailyActivityGraph {
   min-width: 630px;

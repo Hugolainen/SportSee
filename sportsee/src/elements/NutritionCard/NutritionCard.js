@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class NutritionCard extends Component {
     render() {
-        const value = 100;
+        const value = this.props.value;
         var unit = "";
         var desc = "";
         var colorClass ="";

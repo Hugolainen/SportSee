@@ -23,4 +23,8 @@
         line-height: 26px;
         fill: $color-tertiary;
     }
+
+    &__title{
+        fill:transparentize(#FFFFFF, 0.5);
+    }
 }

@@ -1,12 +1,40 @@
 import React, { Component } from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
-
+import {getTodayScore} from '../../api/api';
 class ScoreGraph extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          error: null,
+          todayScore: 0,
+        };
+      }
+      
+      componentDidMount() {
+        this.getTodayScore();
+    }
+
+    async getTodayScore(){
+        const todayScore = await getTodayScore(12);
+        if(todayScore.error)
+          this.setState({ error: todayScore.error });
+        else
+        {
+          this.setState({ todayScore: todayScore.data });
+        }
+    }
 
     render() {
+        var scoreValue = 0;
+        const dataScore = this.state.todayScore;
+        if(dataScore)
+        {
+            scoreValue = dataScore * 100;
+        }
+
         const data = [
-            { name: "Done", value: 30 },
-            { name: "Left", value: 70 },
+            { name: "Done", value: scoreValue },
+            { name: "Left", value: 100 - scoreValue },
         ];
         const filling = [
             { name: "Filling", value: 1 },

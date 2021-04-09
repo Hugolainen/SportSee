@@ -5,13 +5,61 @@ import DailyActivityGraph from '../../elements/DailyActivityGraph/DailyActivityG
 import NutritionCard from '../../elements/NutritionCard/NutritionCard';
 import ScoreGraph from '../../elements/ScoreGraph/ScoreGraph';
 
-
+import {getFirstName, getKeyData} from '../../api/api';
 
 class Stats extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          error: null,
+          firstname: "",
+          keyData: [],
+        };
+    }
     
+    componentDidMount() {
+        this.getFirstname();
+        this.getKeyData();
+    }
+      
+    async getFirstname(){
+        const userName = await getFirstName(12);
+        if(userName.error)
+          this.setState({ error: userName.error });
+        else
+        {
+          this.setState({ firstname: userName.data });
+        }
+    }
+
+    async getKeyData(){
+        const keyData = await getKeyData(12);
+        if(keyData.error)
+          this.setState({ error: keyData.error });
+        else
+        {
+          this.setState({ keyData: keyData.data });
+        }
+    }
 
     render() {
-        const username = "Hugo";
+        var username = "err";
+        const dataName = this.state.firstname;
+        if(dataName)
+        {
+            username = dataName;
+        }
+        
+        const nutrientValues = [];
+        const dataNutrients = this.state.keyData;
+        if(dataNutrients)
+        {
+            nutrientValues[0] = dataNutrients.calorieCount;
+            nutrientValues[1] = dataNutrients.carbohydrateCount;
+            nutrientValues[2] = dataNutrients.lipidCount;
+            nutrientValues[3] = dataNutrients.proteinCount;
+        }
+
 
         return (
             <section className="box">
@@ -30,10 +78,10 @@ class Stats extends Component {
                         </div>
                     </div>
                     <div className="stats__nutrition">
-                        <NutritionCard type="calories"/>
-                        <NutritionCard type="proteins"/>
-                        <NutritionCard type="carbs"/>
-                        <NutritionCard type="lipids"/>
+                        <NutritionCard type="calories" value={nutrientValues[0]}/>
+                        <NutritionCard type="proteins" value={nutrientValues[3]}/>
+                        <NutritionCard type="carbs" value={nutrientValues[1]}/>
+                        <NutritionCard type="lipids" value={nutrientValues[2]}/>
                     </div>
                 </div>
             </section>
