@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import RadarGraph from '../../elements/RadarGraph/RadarGraph';
-import AverageSpeedGraph from '../../elements/AverageSpeedGraph/AverageSpeedGraph';
-import DailyActivityGraph from '../../elements/DailyActivityGraph/DailyActivityGraph';
-import NutritionCard from '../../elements/NutritionCard/NutritionCard';
-import ScoreGraph from '../../elements/ScoreGraph/ScoreGraph';
+import RadarGraph from './RadarGraph';
+import AverageSpeedGraph from './AverageSpeedGraph';
+import DailyActivityGraph from './DailyActivityGraph';
+import NutritionCard from './NutritionCard';
+import ScoreGraph from './ScoreGraph';
 
-import {getFirstName, getKeyData} from '../../api/api';
+import {getFirstName, getKeyData} from '../api/api';
 
 class Stats extends Component {
     constructor(props) {

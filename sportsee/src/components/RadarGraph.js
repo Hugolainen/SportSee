@@ -7,7 +7,7 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-import {getPerformance} from '../../api/api';
+import {getPerformance} from '../api/api';
 
 class RadarGraph extends Component {
     constructor(props) {

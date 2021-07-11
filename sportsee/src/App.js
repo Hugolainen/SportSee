@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
-import NavigationBar from './layouts/Header/NavigationBar';
-import Home from './pages/Home/Home';
+import {
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import UserPage from './pages/UserPage';
+import ErrorPage from './pages/ErrorPage';
 
 class App extends Component{
 
   render(){
     return (
-      <div>
-        <NavigationBar />
-        <Home />
-      </div>
+      <Switch>
+        <Redirect from="/Sportsee" to="/user/12" />
+        <Route exact path="/user/:id" component={UserPage} />
+        <Route component={ErrorPage} />
+      </Switch>
     );
   }
 }

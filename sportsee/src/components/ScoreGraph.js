@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
-import {getTodayScore} from '../../api/api';
+import {getTodayScore} from '../api/api';
 class ScoreGraph extends Component {
     constructor(props) {
         super(props);

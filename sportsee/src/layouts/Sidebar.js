@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import iconMeditation from "../../assets/images/iconMeditation.png"
-import iconSwim from "../../assets/images/iconSwim.png"
-import iconBike from "../../assets/images/iconBike.png"
-import iconDumbbell from "../../assets/images/iconDumbbell.png"
+import iconMeditation from "../assets/images/iconMeditation.png"
+import iconSwim from "../assets/images/iconSwim.png"
+import iconBike from "../assets/images/iconBike.png"
+import iconDumbbell from "../assets/images/iconDumbbell.png"
 
 class Sidebar extends Component {
     render() {

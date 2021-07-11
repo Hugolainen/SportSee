@@ -7,7 +7,7 @@ import {
     ResponsiveContainer
   } from "recharts";
 
-  import {getAverageSessions} from '../../api/api';
+  import {getAverageSessions} from '../api/api';
 
 class AverageSpeedGraph extends Component {
   constructor(props) {

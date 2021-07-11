@@ -12,9 +12,10 @@
 @import "./components/scoreGraph";
 @import "./components/averageSpeedGraph";
 @import "./components/dailyActivityGraph";
+@import "./components/stats";
 
 @import "./layouts/header";
 @import "./layouts/sidebar";
 
-@import "./pages/home";
-@import "./pages/stats";
+@import "./pages/userPage";
+@import "./pages/errorPage";
