@@ -10,7 +10,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import {getDailyActivity} from '../api/api';
+import {getDailyActivity} from '../services/api';
 
 class DailyActivityGraph extends Component {
   constructor(props) {

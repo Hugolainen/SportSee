@@ -7,7 +7,7 @@ import {
     ResponsiveContainer
   } from "recharts";
 
-  import {getAverageSessions} from '../api/api';
+  import {getAverageSessions} from '../services/api';
 
 class AverageSpeedGraph extends Component {
   constructor(props) {
@@ -86,8 +86,8 @@ class AverageSpeedGraph extends Component {
 
             <defs>
               <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="40%"   stop-color="rgba(255,255,255,0.5)"/>
-                <stop offset="100%" stop-color="#ffffff"/>
+                <stop offset="40%"   stopColor="rgba(255,255,255,0.5)"/>
+                <stop offset="100%" stopColor="#ffffff"/>
               </linearGradient>
             </defs>
 

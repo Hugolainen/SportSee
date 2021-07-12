@@ -15,6 +15,14 @@ async function resolve(promise) {
     return resolved;
 }
 
+export async function validateUserExists(userId) {
+  try{
+    return await resolve(axios.get(`http://localhost:3000/user/${userId}`).then((res) => res.data === null ? false: true));
+  } catch(err){
+    return false;
+  }
+}
+
 export async function getUser(userId) {
   return await resolve(axios.get(`http://localhost:3000/user/${userId}`).then(res => res.data));
 }

@@ -5,66 +5,67 @@ import DailyActivityGraph from './DailyActivityGraph';
 import NutritionCard from './NutritionCard';
 import ScoreGraph from './ScoreGraph';
 
-import {getFirstName, getKeyData} from '../api/api';
+import userService from '../services/user.service';
 
 class Stats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          error: null,
-          firstname: "",
-          keyData: [],
+            userInfos: [],
+            keyData: [],
+            todayScore: 0,
         };
     }
-    
+
     componentDidMount() {
-        this.getFirstname();
-        this.getKeyData();
+        this.getAllUserData(this.props.userId)
     }
-      
-    async getFirstname(){
-        const userName = await getFirstName(12);
-        if(userName.error)
-          this.setState({ error: userName.error });
-        else
-        {
-          this.setState({ firstname: userName.data });
-        }
+    
+    getAllUserData(userId){
+        this.getUserInfos(userId);
+        this.getUserKeyData(userId);
+        this.getUserTodayScore(userId);
     }
 
-    async getKeyData(){
-        const keyData = await getKeyData(12);
-        if(keyData.error)
-          this.setState({ error: keyData.error });
-        else
-        {
-          this.setState({ keyData: keyData.data });
-        }
+    getUserInfos(id) {
+        userService.getUser(id)
+          .then((res) => {
+            this.setState({
+                userInfos: res.data.data.userInfos,
+            });
+          })
+    }
+
+    getUserKeyData(id) {
+        userService.getUser(id)
+          .then((res) => {
+            this.setState({
+                keyData: res.data.data.keyData,
+            });
+          })
+    }
+
+    getUserTodayScore(id) {
+        userService.getUser(id)
+          .then((res) => {
+            this.setState({
+                todayScore: res.data.data.todayScore,
+            });
+          })
     }
 
     render() {
-        var username = "err";
-        const dataName = this.state.firstname;
-        if(dataName)
-        {
-            username = dataName;
-        }
-        
-        const nutrientValues = [];
-        const dataNutrients = this.state.keyData;
-        if(dataNutrients)
-        {
-            nutrientValues[0] = dataNutrients.calorieCount;
-            nutrientValues[1] = dataNutrients.carbohydrateCount;
-            nutrientValues[2] = dataNutrients.lipidCount;
-            nutrientValues[3] = dataNutrients.proteinCount;
-        }
+        const firstName = this.state.userInfos.firstName;
+        const keyData = this.state.keyData;
+        const todayScore = this.state.todayScore;
 
+
+       // console.log(todayScore);
 
         return (
             <section className="box">
                 <div className="box__title">
-                    <h1> Hello <em> {username} </em> </h1>
+                    <h1> Hello <em> {firstName} </em> </h1>
                     <p> Congratulations! You reached yesterday’s goal! 👏 </p>
                 </div>
             
@@ -74,14 +75,14 @@ class Stats extends Component {
                         <div className="stats__activity__detail">
                             <AverageSpeedGraph />
                             <RadarGraph />
-                            <ScoreGraph />
+                            <ScoreGraph value={todayScore} />
                         </div>
                     </div>
                     <div className="stats__nutrition">
-                        <NutritionCard type="calories" value={nutrientValues[0]}/>
-                        <NutritionCard type="proteins" value={nutrientValues[3]}/>
-                        <NutritionCard type="carbs" value={nutrientValues[1]}/>
-                        <NutritionCard type="lipids" value={nutrientValues[2]}/>
+                        <NutritionCard type="calories" value={keyData.calorieCount}/>
+                        <NutritionCard type="proteins" value={keyData.proteinCount}/>
+                        <NutritionCard type="carbs" value={keyData.carbohydrateCount}/>
+                        <NutritionCard type="lipids" value={keyData.lipidCount}/>
                     </div>
                 </div>
             </section>
