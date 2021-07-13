@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
 class ScoreGraph extends Component {
 
     render() {
-        const dataScore = this.props.value;
+        const dataScore = this.props.score;
         const scoreValue = dataScore * 100;
 
         const data = [

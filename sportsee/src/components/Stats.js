@@ -1,66 +1,62 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import RadarGraph from './RadarGraph';
 import AverageSpeedGraph from './AverageSpeedGraph';
 import DailyActivityGraph from './DailyActivityGraph';
 import NutritionCard from './NutritionCard';
 import ScoreGraph from './ScoreGraph';
 
-import userService from '../services/user.service';
+import { connect } from "react-redux";
+import { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance } from "../actions/user";
 
-class Stats extends Component {
+export class Stats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userInfos: [],
-            keyData: [],
-            todayScore: 0,
+          componentMounted: false,
         };
     }
 
-    componentDidMount() {
-        this.getAllUserData(this.props.userId)
+    async componentDidMount () {
+        await this.getAllUserData(this.props.userId);
+        this.setState({
+            componentMounted: true,
+        });
     }
     
-    getAllUserData(userId){
-        this.getUserInfos(userId);
-        this.getUserKeyData(userId);
-        this.getUserTodayScore(userId);
-    }
-
-    getUserInfos(id) {
-        userService.getUser(id)
-          .then((res) => {
-            this.setState({
-                userInfos: res.data.data.userInfos,
-            });
-          })
-    }
-
-    getUserKeyData(id) {
-        userService.getUser(id)
-          .then((res) => {
-            this.setState({
-                keyData: res.data.data.keyData,
-            });
-          })
-    }
-
-    getUserTodayScore(id) {
-        userService.getUser(id)
-          .then((res) => {
-            this.setState({
-                todayScore: res.data.data.todayScore,
-            });
-          })
+    async getAllUserData(userId){
+        await this.props.retrieveUser(userId);
+        await this.props.retrieveUserActivity(userId);
+        await this.props.retrieveUserSessions(userId);
+        await this.props.retrieveUserPerformance(userId);
     }
 
     render() {
-        const firstName = this.state.userInfos.firstName;
-        const keyData = this.state.keyData;
-        const todayScore = this.state.todayScore;
+        let firstName;
+        let keyData = [];
+        let todayScore;
+        let activity = [];
+        let sessions = [];
+        let performanceKind = [];
+        let performanceData = [];
 
-
-       // console.log(todayScore);
+        if(this.state.componentMounted){
+            firstName = this.props.user.data.userInfos.firstName;
+            keyData = this.props.user.data.keyData;
+            todayScore = this.props.user.data.todayScore;
+    
+            if(this.props.userActivity.data.userId.toString() === this.props.userId){
+                activity = this.props.userActivity.data.sessions;
+            }
+            if(this.props.userSessions.data.userId.toString() === this.props.userId){
+                sessions = this.props.userSessions.data.sessions;
+            }
+            if(this.props.userPerformance.data.userId.toString() === this.props.userId){
+                performanceKind = this.props.userPerformance.data.kind;
+                performanceData = this.props.userPerformance.data.data;
+            } 
+        }
 
         return (
             <section className="box">
@@ -71,11 +67,11 @@ class Stats extends Component {
             
                 <div className="stats">
                     <div className="stats__activity">
-                        <DailyActivityGraph />
+                        <DailyActivityGraph activity={activity}/>
                         <div className="stats__activity__detail">
-                            <AverageSpeedGraph />
-                            <RadarGraph />
-                            <ScoreGraph value={todayScore} />
+                            <AverageSpeedGraph sessions={sessions}/>
+                            <RadarGraph kind={performanceKind} data={performanceData}/>
+                            <ScoreGraph score={todayScore} />
                         </div>
                     </div>
                     <div className="stats__nutrition">
@@ -88,5 +84,22 @@ class Stats extends Component {
             </section>
         );
     }
-  }
-export default Stats;
+}
+
+const mapStateToProps = (state) => {
+    return {
+      user: state.user || [],
+      userActivity: state.userActivity,
+      userSessions: state.userSessions,
+      userPerformance: state.userPerformance,
+    };
+};
+  
+Stats.propTypes = {
+    userId: PropTypes.string,
+}
+Stats.defaultProps = {
+    userId: '0',
+}
+
+export default connect(mapStateToProps, { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance  })(Stats);

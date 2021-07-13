@@ -7,50 +7,10 @@ import {
     ResponsiveContainer
   } from "recharts";
 
-  import {getAverageSessions} from '../services/api';
-
 class AverageSpeedGraph extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      averageSessions: [],
-    };
-  }
-  
-  componentDidMount() {
-    this.getAverageSessions();
-  }
-
-  async getAverageSessions(){
-    const averageSessions = await getAverageSessions(12);
-    if(averageSessions.error)
-      this.setState({ error: averageSessions.error });
-    else
-    {
-      this.setState({ averageSessions: averageSessions.data });
-    }
-  }
-
-  generateData(){
-    var data = [];
-    const dataAPI = this.state.averageSessions;
-    if(dataAPI)
-    {
-        data = dataAPI;
-    }
-    else{
-      let defaultData = {
-        day: "Nan",
-        sessionLength: 0
-      } 
-      data = defaultData;
-    }
-    return data;
-  }
 
   render() {
-    const data = this.generateData();
+    const sessions = this.props.sessions;
 
     const CustomTooltip = ({ active, payload}) => {
       if (active && payload && payload.length) {
@@ -67,7 +27,7 @@ class AverageSpeedGraph extends Component {
       <div className="averageSpeedGraph">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-              data={data}
+              data={sessions}
               margin={{
                   top: 60,
                   right: 20,

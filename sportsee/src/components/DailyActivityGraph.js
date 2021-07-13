@@ -10,51 +10,10 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import {getDailyActivity} from '../services/api';
-
 class DailyActivityGraph extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      dailyActivity: [],
-    };
-  }
-  
-  componentDidMount() {
-    this.getDailyActivity();
-  }
-
-  async getDailyActivity(){
-    const dailyActivity = await getDailyActivity(12);
-    if(dailyActivity.error)
-      this.setState({ error: dailyActivity.error });
-    else
-    {
-      this.setState({ dailyActivity: dailyActivity.data });
-    }
-  }
-
-  generateData(){
-    var data = [];
-    const dataAPI = this.state.dailyActivity;
-    if(dataAPI)
-    {
-        data = dataAPI;
-    }
-    else{
-      let defaultData = {
-        day: "Nan",
-        kilogram: 0,
-        calories: 0,
-      } 
-      data = defaultData;
-    }
-    return data;
-  }
 
   render() {
-    const data = this.generateData();
+    const sessions = this.props.activity;
           
     const CustomTooltip = ({ active, payload, label }) => {
       if (active && payload && payload.length) {
@@ -69,7 +28,7 @@ class DailyActivityGraph extends Component {
       return null;
     };
           
-    const editLegendText = (value: string) => {
+    const editLegendText = (value) => {
       var legendTxt="";
       if(value === "kilogram"){
         legendTxt= "Weight (kg)";
@@ -84,7 +43,7 @@ class DailyActivityGraph extends Component {
       <div className="dailyActivityGraph">
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={data}
+              data={sessions}
               margin={{
                 top: 20,
                 right: 0,
