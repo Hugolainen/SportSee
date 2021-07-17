@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class NutritionCard extends Component {
     render() {
@@ -56,5 +57,16 @@ class NutritionCard extends Component {
             </div>
         );
     }
-  }
+}
+
+NutritionCard.propTypes = {
+    type: PropTypes.string,
+    value: PropTypes.number,
+}
+
+NutritionCard.defaultProps = {
+    type: "undefined",
+    value: 0,
+}
+
 export default NutritionCard;

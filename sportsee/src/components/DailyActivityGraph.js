@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   BarChart,
   Bar,
@@ -14,7 +15,6 @@ class DailyActivityGraph extends Component {
 
   render() {
     const sessions = this.props.activity;
-          
     const CustomTooltip = ({ active, payload, label }) => {
       if (active && payload && payload.length) {
         return (
@@ -73,7 +73,22 @@ class DailyActivityGraph extends Component {
             </BarChart>
           </ResponsiveContainer>
       </div>
-  );
-    }
+   );
   }
+}
+
+DailyActivityGraph.propTypes = {
+  activity: PropTypes.arrayOf(
+    PropTypes.shape({
+        day: PropTypes.string,
+        kilogram: PropTypes.number,
+        calories: PropTypes.number
+    })
+  )
+}
+
+DailyActivityGraph.defaultProps = {
+  activity: [{day: '0000-00-00', kilogram:0, calories:0}]
+}
+
 export default DailyActivityGraph;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
     LineChart,
     Line,
@@ -11,7 +12,6 @@ class AverageSpeedGraph extends Component {
 
   render() {
     const sessions = this.props.sessions;
-
     const CustomTooltip = ({ active, payload}) => {
       if (active && payload && payload.length) {
           return (
@@ -78,6 +78,19 @@ class AverageSpeedGraph extends Component {
       </div>
     );
   }
+}
+
+AverageSpeedGraph.propTypes = {
+  sessions: PropTypes.arrayOf(
+    PropTypes.shape({
+        day: PropTypes.number,
+        sessionLength: PropTypes.number,
+    })
+  )
+}
+
+AverageSpeedGraph.defaultProps = {
+  sessions: [{day: 0, sessionLength:0}]
 }
 
 export default AverageSpeedGraph;

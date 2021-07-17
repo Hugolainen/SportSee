@@ -14,14 +14,14 @@ export class Stats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          componentMounted: false,
+          isLoading: true,
         };
     }
 
     async componentDidMount () {
         await this.getAllUserData(this.props.userId);
         this.setState({
-            componentMounted: true,
+            isLoading: false,
         });
     }
     
@@ -33,73 +33,97 @@ export class Stats extends Component {
     }
 
     render() {
-        let firstName;
-        let keyData = [];
-        let todayScore;
-        let activity = [];
-        let sessions = [];
-        let performanceKind = [];
-        let performanceData = [];
-
-        if(this.state.componentMounted){
-            firstName = this.props.user.data.userInfos.firstName;
-            keyData = this.props.user.data.keyData;
-            todayScore = this.props.user.data.todayScore;
-    
-            if(this.props.userActivity.data.userId.toString() === this.props.userId){
-                activity = this.props.userActivity.data.sessions;
-            }
-            if(this.props.userSessions.data.userId.toString() === this.props.userId){
-                sessions = this.props.userSessions.data.sessions;
-            }
-            if(this.props.userPerformance.data.userId.toString() === this.props.userId){
-                performanceKind = this.props.userPerformance.data.kind;
-                performanceData = this.props.userPerformance.data.data;
-            } 
+        if(this.state.isLoading) {
+            return (<div> Stats are loading </div>);
         }
+        else {
+            const firstName = this.props.user.userInfos.firstName;
+            const keyData = this.props.user.keyData;
+            const todayScore = this.props.user.todayScore;
 
-        return (
-            <section className="box">
-                <div className="box__title">
-                    <h1> Hello <em> {firstName} </em> </h1>
-                    <p> Congratulations! You reached yesterday’s goal! 👏 </p>
-                </div>
-            
-                <div className="stats">
-                    <div className="stats__activity">
-                        <DailyActivityGraph activity={activity}/>
-                        <div className="stats__activity__detail">
-                            <AverageSpeedGraph sessions={sessions}/>
-                            <RadarGraph kind={performanceKind} data={performanceData}/>
-                            <ScoreGraph score={todayScore} />
+            const activity = this.props.userActivity.sessions;
+
+            const sessions = this.props.userSessions.sessions;
+
+            const performanceKind = this.props.userPerformance.kind;
+            const performanceData = this.props.userPerformance.data;
+
+            return (
+                <section className="box">
+                    <div className="box__title">
+                        <h1> Hello <em> {firstName} </em> </h1>
+                        <p> Congratulations! You reached yesterday’s goal! 👏 </p>
+                    </div>
+                
+                    <div className="stats">
+                        <div className="stats__activity">
+                            <DailyActivityGraph activity={activity}/>
+                            <div className="stats__activity__detail">
+                                <AverageSpeedGraph sessions={sessions}/>
+                                <RadarGraph kind={performanceKind} data={performanceData}/>
+                                <ScoreGraph score={todayScore} />
+                            </div>
+                        </div>
+                        <div className="stats__nutrition">
+                            <NutritionCard type="calories" value={keyData.calorieCount}/>
+                            <NutritionCard type="proteins" value={keyData.proteinCount}/>
+                            <NutritionCard type="carbs" value={keyData.carbohydrateCount}/>
+                            <NutritionCard type="lipids" value={keyData.lipidCount}/>
                         </div>
                     </div>
-                    <div className="stats__nutrition">
-                        <NutritionCard type="calories" value={keyData.calorieCount}/>
-                        <NutritionCard type="proteins" value={keyData.proteinCount}/>
-                        <NutritionCard type="carbs" value={keyData.carbohydrateCount}/>
-                        <NutritionCard type="lipids" value={keyData.lipidCount}/>
-                    </div>
-                </div>
-            </section>
-        );
+                </section>
+            );  
+        }
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-      user: state.user || [],
-      userActivity: state.userActivity,
-      userSessions: state.userSessions,
-      userPerformance: state.userPerformance,
+      user: state.user.data,
+      userActivity: state.userActivity.data,
+      userSessions: state.userSessions.data,
+      userPerformance: state.userPerformance.data,
     };
 };
   
 Stats.propTypes = {
     userId: PropTypes.string,
+    user:PropTypes.shape({
+        data: PropTypes.shape({
+            id: PropTypes.number,
+            userInfos: PropTypes.shape({
+                firstName: PropTypes.string,
+                lastName: PropTypes.string,
+                age: PropTypes.number
+            }),
+            todayScore: PropTypes.number,
+            keyData: PropTypes.shape({
+                calorieCount: PropTypes.number,
+                proteinCount: PropTypes.number,
+                carbohydrateCount: PropTypes.number,
+                lipidCount: PropTypes.number
+            })
+        })
+    }),
 }
+
 Stats.defaultProps = {
-    userId: '0',
+    userId: '',
+    user:PropTypes.shape({
+        data: PropTypes.shape({
+            id: 0,
+            userInfos: PropTypes.shape({
+                firstName: 'err',
+            }),
+            todayScore: 0,
+            keyData: PropTypes.shape({
+                calorieCount: 0,
+                proteinCount: 0,
+                carbohydrateCount: 0,
+                lipidCount: 0
+            })
+        })
+    }),
 }
 
 export default connect(mapStateToProps, { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance  })(Stats);

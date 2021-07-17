@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
 
 class ScoreGraph extends Component {
@@ -67,5 +68,14 @@ class ScoreGraph extends Component {
             </div>
         );
     }
-  }
+}
+
+ScoreGraph.propTypes = {
+    score: PropTypes.number,
+}
+
+ScoreGraph.defaultProps = {
+    score: 0,
+}
+
 export default ScoreGraph;

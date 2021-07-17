@@ -13,6 +13,7 @@ export class UserPage extends Component {
         this.state = {
           userId: this.props.match.params.id,
           userExists: false,
+          isLoading: true,
         };
     }
 
@@ -21,20 +22,28 @@ export class UserPage extends Component {
         if(this.props.user.length !== 0){
             this.setState({
                 userExists: true,
+                isLoading: false,
+        });
+        this.setState({
+            isLoading: false,
         });
        }
     }
 
     render() {
-        const { userExists, userId } = this.state;
+        const { userExists, userId, isLoading } = this.state;
         
         return (
             <div className="userPage">
                 <NavigationBar />
+                { isLoading 
+                ? <div> Stats are loading </div> 
+                : 
                 <div className="statsView">
                     <Sidebar />
                     { userExists ? <Stats userId={userId}/> : <UnexistingUser/>}
                 </div>
+                }
             </div>
         );
     }
@@ -42,8 +51,8 @@ export class UserPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      user: state.user,
+      user: state.user.data,
     };
   };
-  
-  export default connect(mapStateToProps, { retrieveUser  })(UserPage);
+
+export default connect(mapStateToProps, { retrieveUser  })(UserPage);
