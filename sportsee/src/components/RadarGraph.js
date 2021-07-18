@@ -20,6 +20,12 @@ import {
  * )
  */
 class RadarGraph extends Component {
+  /**
+    * Combines the Kind and Data objects to one object fitted to the user of the recharts radar graph:
+    * @param   {object} kind Object containing the translation from Kind-number to Kind-string
+    * @param   {array} data  Array of objects containing the couples Kind-number and Kind-performance value
+    * @return  {array}       Array of objects containing the couples Kind-string and Kind-performance value
+  */
   combineData(data, kind){
     var dataList = [];
     for(let i=0; i<data.length; i++){

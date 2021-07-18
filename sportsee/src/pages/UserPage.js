@@ -26,6 +26,11 @@ export class UserPage extends Component {
         };
     }
 
+    /**
+     * Retrive API data on the User on Mounting
+     * Updates the isLoading state of the app once the data is retrived
+     * Updates the userExists state to true if a user with the provided userId is found
+    */
     async componentDidMount() {
         await this.props.retrieveUser(this.state.userId);
         if(this.props.user.length !== 0){

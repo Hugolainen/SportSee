@@ -28,6 +28,10 @@ export class Stats extends Component {
         };
     }
 
+    /**
+     * Retrive API data on the User on Mounting
+     * Updates the isLoading state of the app once the data is retrived
+    */
     async componentDidMount () {
         await this.getAllUserData(this.props.userId);
         this.setState({
@@ -35,6 +39,10 @@ export class Stats extends Component {
         });
     }
     
+    /**
+     * Calls Redux Actions to retrive API data on the User
+     * @param {number} userId   
+    */
     async getAllUserData(userId){
         await this.props.retrieveUser(userId);
         await this.props.retrieveUserActivity(userId);
