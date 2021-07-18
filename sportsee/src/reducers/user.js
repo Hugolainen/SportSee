@@ -4,6 +4,12 @@ import {
 
 const initialState = [];
 
+/**
+ * Updates the application's 'User' state corresponding to dispatched action
+ * @param   {state} user     
+ * @param   {dispatch} action    
+ * @return  {payload or initialState}       
+*/
 function userReducer(user = initialState, action) {
 const { type, payload } = action;
 

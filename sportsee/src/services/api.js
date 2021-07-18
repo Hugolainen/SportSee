@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+/**
+ * Legacy code of initial API data fetching
+ */
 async function resolve(promise) {
     const resolved = {
       data: null,

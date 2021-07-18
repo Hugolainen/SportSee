@@ -7,6 +7,10 @@ const initialState = {};
 
 const middleware = [thunk];
 
+/**
+ * Creates a Redux store
+ * The Store brings Actions and Reducers together and hold the Application state.
+ */
 const store = createStore(
   rootReducer,
   initialState,

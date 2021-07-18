@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Stats.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Stats.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+import RadarGraph from './RadarGraph';
+import AverageSpeedGraph from './AverageSpeedGraph';
+import DailyActivityGraph from './DailyActivityGraph';
+import NutritionCard from './NutritionCard';
+import ScoreGraph from './ScoreGraph';
+
+import { connect } from "react-redux";
+import { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance } from "../actions/user";
+
+/**
+ * Component offering the stats dashboard, it fetches the data from the API and calls the needed charts using those data as props
+ *
+ * @component
+ * @example
+ * const userId = 12
+ * return (
+ *   &lt;Stats userId={userId}/>
+ * )
+ */
+export class Stats extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          isLoading: true,
+        };
+    }
+
+    async componentDidMount () {
+        await this.getAllUserData(this.props.userId);
+        this.setState({
+            isLoading: false,
+        });
+    }
+    
+    async getAllUserData(userId){
+        await this.props.retrieveUser(userId);
+        await this.props.retrieveUserActivity(userId);
+        await this.props.retrieveUserSessions(userId);
+        await this.props.retrieveUserPerformance(userId);
+    }
+
+    render() {
+        if(this.state.isLoading) {
+            return (&lt;div> Stats are loading &lt;/div>);
+        }
+        else {
+            const firstName = this.props.user.userInfos.firstName;
+            const keyData = this.props.user.keyData;
+            const todayScore = this.props.user.todayScore;
+
+            const activity = this.props.userActivity.sessions;
+
+            const sessions = this.props.userSessions.sessions;
+
+            const performanceKind = this.props.userPerformance.kind;
+            const performanceData = this.props.userPerformance.data;
+
+            return (
+                &lt;section className="box">
+                    &lt;div className="box__title">
+                        &lt;h1> Hello &lt;em> {firstName} &lt;/em> &lt;/h1>
+                        &lt;p> Congratulations! You reached yesterday’s goal! 👏 &lt;/p>
+                    &lt;/div>
+                
+                    &lt;div className="stats">
+                        &lt;div className="stats__activity">
+                            &lt;DailyActivityGraph activity={activity}/>
+                            &lt;div className="stats__activity__detail">
+                                &lt;AverageSpeedGraph sessions={sessions}/>
+                                &lt;RadarGraph kind={performanceKind} data={performanceData}/>
+                                &lt;ScoreGraph score={todayScore} />
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;div className="stats__nutrition">
+                            &lt;NutritionCard type="calories" value={keyData.calorieCount}/>
+                            &lt;NutritionCard type="proteins" value={keyData.proteinCount}/>
+                            &lt;NutritionCard type="carbs" value={keyData.carbohydrateCount}/>
+                            &lt;NutritionCard type="lipids" value={keyData.lipidCount}/>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/section>
+            );  
+        }
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+      user: state.user.data,
+      userActivity: state.userActivity.data,
+      userSessions: state.userSessions.data,
+      userPerformance: state.userPerformance.data,
+    };
+};
+  
+Stats.propTypes = {
+    userId: PropTypes.string,
+    user:PropTypes.shape({
+        data: PropTypes.shape({
+            id: PropTypes.number,
+            userInfos: PropTypes.shape({
+                firstName: PropTypes.string,
+                lastName: PropTypes.string,
+                age: PropTypes.number
+            }),
+            todayScore: PropTypes.number,
+            keyData: PropTypes.shape({
+                calorieCount: PropTypes.number,
+                proteinCount: PropTypes.number,
+                carbohydrateCount: PropTypes.number,
+                lipidCount: PropTypes.number
+            })
+        })
+    }),
+}
+
+Stats.defaultProps = {
+    userId: '',
+    user:PropTypes.shape({
+        data: PropTypes.shape({
+            id: 0,
+            userInfos: PropTypes.shape({
+                firstName: 'err',
+            }),
+            todayScore: 0,
+            keyData: PropTypes.shape({
+                calorieCount: 0,
+                proteinCount: 0,
+                carbohydrateCount: 0,
+                lipidCount: 0
+            })
+        })
+    }),
+}
+
+//export default connect(mapStateToProps, { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance  })(Stats);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="AverageSpeedGraph.html">AverageSpeedGraph</a></li><li><a href="DailyActivityGraph.html">DailyActivityGraph</a></li><li><a href="ErrorPage.html">ErrorPage</a></li><li><a href="NavigationBar.html">NavigationBar</a></li><li><a href="NutritionCard.html">NutritionCard</a></li><li><a href="RadarGraph.html">RadarGraph</a></li><li><a href="ScoreGraph.html">ScoreGraph</a></li><li><a href="Sidebar.html">Sidebar</a></li><li><a href="Stats.html">Stats</a></li><li><a href="UnexistingUser.html">UnexistingUser</a></li><li><a href="UserPage.html">UserPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jul 18 2021 10:32:58 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
