@@ -34,13 +34,12 @@ Recommanded code editor: [Visual Studio Code](https://code.visualstudio.com/)
     - [Sportsee Micro-API](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
 ## Installation of the Front-end
-- Clone the project to your computer:
+- Get the project files
+    - Clone the project to your computer:
 `git clone https://github.com/Hugolainen/SportSee.git`
-
 *OR*
-
-- Download the ZIP folder of the project from the project repository on GitHub (link below) and extract the project files
-[SportSee](https://github.com/Hugolainen/SportSee)
+    - Download the ZIP folder of the project from the project repository on GitHub (link below) and extract the project files
+        - [SportSee](https://github.com/Hugolainen/SportSee)
 
 - Access the project folder
 `cd sportsee`
