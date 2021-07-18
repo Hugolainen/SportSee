@@ -8,6 +8,16 @@ import {
     ResponsiveContainer
   } from "recharts";
 
+  /**
+ * Component displaying the user's sessions results with a line chart from 'recharts'
+ *
+ * @component
+ * @example
+ * const sessions = [{day: 1, sessionLength:60}, {day: 2, sessionLength:85}]
+ *  * return (
+ *   <AverageSpeedGraph sessions={sessions}/>
+ * )
+ */
 class AverageSpeedGraph extends Component {
 
   render() {

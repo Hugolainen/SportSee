@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
 
+/**
+ * Component for showing error message in case of unexisting user
+ *
+ * @component
+ * @example
+ * return (
+ *   <UnexistingUser />
+ * )
+ */
 class UnexistingUser extends Component {
 
     render() {

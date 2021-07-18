@@ -7,6 +7,15 @@ import NavigationBar from '../layouts/NavigationBar';
 import { connect } from "react-redux";
 import { retrieveUser } from "../actions/user";
 
+/**
+ * Component for main user page, consists of the navigation bars and the stats dashboard
+ *
+ * @component
+ * @example
+ * return (
+ *   <UserPage />
+ * )
+ */
 export class UserPage extends Component {
     constructor(props) {
         super(props);

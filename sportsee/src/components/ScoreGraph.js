@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
 
+/**
+ * Component displaying the user's today's score using a pie chart from 'recharts'
+ *
+ * @component
+ * @example
+ * const score = 21
+ * return (
+ *   <ScoreGraph score={score}/>
+ * )
+ */
 class ScoreGraph extends Component {
 
     render() {

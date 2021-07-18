@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 
-class UserPage extends Component {
+/**
+ * Component for showing error message in case page not found
+ *
+ * @component
+ * @example
+ * return (
+ *   <ErrorPage />
+ * )
+ */
+class ErrorPage extends Component {
     render() {
 
         return (
@@ -10,4 +19,4 @@ class UserPage extends Component {
         );
     }
   }
-export default UserPage;
+export default ErrorPage;

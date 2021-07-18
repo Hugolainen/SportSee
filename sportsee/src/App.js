@@ -7,6 +7,15 @@ import {
 import UserPage from './pages/UserPage';
 import ErrorPage from './pages/ErrorPage';
 
+  /**
+ * App component managing the web-app routing
+ *
+ * @component
+ * @example
+ *  * return (
+ *   <App />
+ * )
+ */
 class App extends Component{
 
   render(){

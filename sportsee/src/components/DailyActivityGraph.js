@@ -11,6 +11,16 @@ import {
   ResponsiveContainer
 } from "recharts";
 
+/**
+ * Component displaying the user's daily activity results with a bar chart from 'recharts'
+ *
+ * @component
+ * @example
+ * const activity = [{day: '2020-11-01', kilogram:70, calories:1920}, {day: '2020-11-02', kilogram:71, calories:1670}]
+ *  * return (
+ *   <DailyActivityGraph activity={activity}/>
+ * )
+ */
 class DailyActivityGraph extends Component {
 
   render() {

@@ -8,6 +8,17 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
+/**
+ * Component displaying the user's performances using a radar chart from 'recharts'
+ *
+ * @component
+ * @example
+ * const kind = {"1": 'strength', "2": 'stamina', "3": 'mental'}
+ * const data = [{value: 50, kind:1}, {value: 20, kind:2}, {value: 35, kind:3}]
+ *  * return (
+ *   <RadarGraph kind={kind} data={data}/>
+ * )
+ */
 class RadarGraph extends Component {
   combineData(data, kind){
     var dataList = [];
@@ -25,7 +36,6 @@ class RadarGraph extends Component {
     const kind = this.props.kind;
     const data = this.props.data;
     const dataList = this.combineData(data, kind);
-    //console.log(this.props);
     return (
         <div className="radarGraph">
             <ResponsiveContainer width="100%" height="100%">

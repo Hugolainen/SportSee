@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import logo from '../assets/images/logo.png';
 
+/**
+ * Component for the placeholding top navigation bar
+ *
+ * @component
+ * @example
+ * return (
+ *   <NavigationBar />
+ * )
+ */
 class NavigationBar extends Component {
     render() {
       return (

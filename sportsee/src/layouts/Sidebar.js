@@ -4,6 +4,15 @@ import iconSwim from "../assets/images/iconSwim.png"
 import iconBike from "../assets/images/iconBike.png"
 import iconDumbbell from "../assets/images/iconDumbbell.png"
 
+/**
+ * Component for the placeholding side navigation bar
+ *
+ * @component
+ * @example
+ * return (
+ *   <Sidebar />
+ * )
+ */
 class Sidebar extends Component {
     render() {
       return (

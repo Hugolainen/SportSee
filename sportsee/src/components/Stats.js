@@ -10,6 +10,16 @@ import ScoreGraph from './ScoreGraph';
 import { connect } from "react-redux";
 import { retrieveUser, retrieveUserActivity, retrieveUserSessions, retrieveUserPerformance } from "../actions/user";
 
+/**
+ * Component offering the stats dashboard, it fetches the data from the API and calls the needed charts using those data as props
+ *
+ * @component
+ * @example
+ * const userId = 12
+ * return (
+ *   <Stats userId={userId}/>
+ * )
+ */
 export class Stats extends Component {
     constructor(props) {
         super(props);

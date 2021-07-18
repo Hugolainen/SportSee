@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Component displaying the user nutrition value of a proped defined type
+ *
+ * @component
+ * @example
+ * const type = 'calories'
+ * const value = 1400
+ *  * return (
+ *   <NutritionCard type={type} value={value}/>
+ * )
+ */
 class NutritionCard extends Component {
     render() {
         const value = this.props.value;
