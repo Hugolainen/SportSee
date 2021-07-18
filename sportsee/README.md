@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# SportSee
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Dependencies 
+Base
+- react: v17.0.2
+- react-dom: v17.0.2
+- react-router-dom" v5.2.0
+- react-scripts: v4.0.3
+- recharts": v2.0.9
 
-In the project directory, you can run:
+API communication
+- redux: v4.1.0
+- react-redux: v7.2.4
+- redux-thunk: v2.3.0
+- axios: v0.21.1
 
-### `yarn start`
+Prop validation
+- prop-types: v15.7.2
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Documentation
+- jsdoc: v3.6.7
+- better-docs: v2.3.2
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation requirements
+- Git is adviced to clone the repository
+- Node.js v14.15.5+ 
+- Yarn v1.22.10+
+Recommanded code editor: [Visual Studio Code](https://code.visualstudio.com/)
 
-### `yarn test`
+## Installation of the Back-end
+- Fork the below GitHub repository and follow the instructions
+    - [Sportsee Micro-API](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation of the Front-end
+- Clone the project to your computer:
+`git clone https://github.com/Hugolainen/SportSee.git`
 
-### `yarn build`
+*OR*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Download the ZIP folder of the project from the project repository on GitHub (link below) and extract the project files
+[SportSee](https://github.com/Hugolainen/SportSee)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Access the project folder
+`cd sportsee`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Install the dependencies
+`yarn install`
 
-### `yarn eject`
+- Run the web application (default port is 3001)
+`yarn install`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Accessing the web application
+- Only 2 users are available in the micro-API, access their respective dashboard using the URLs
+    - [localhost:3001/user/12](https://localhost:3001/user/12)
+    - [localhost:3001/user/18](https://localhost:3001/user/18)
