@@ -33,15 +33,15 @@ export class UserPage extends Component {
     */
     async componentDidMount() {
         await this.props.retrieveUser(this.state.userId);
-        if(this.props.user.length !== 0){
+        if(this.props.user){
             this.setState({
                 userExists: true,
                 isLoading: false,
         });
-        this.setState({
-            isLoading: false,
-        });
        }
+       this.setState({
+        isLoading: false,
+    });
     }
 
     render() {
